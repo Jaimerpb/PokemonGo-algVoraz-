@@ -23,3 +23,18 @@ def es_factible(conjunto_pokemons):
             return False
     return True
 
+def capturar_pokemons_voraz(pokemons):
+    pokemons_ordenados = sorted(pokemons, key=lambda pokemon: calcular_valor_total(pokemon), reverse=True)
+    conjunto_pokemons = []
+    while len(conjunto_pokemons) < 10:
+        mejor_pokemon = None
+        for pokemon in pokemons_ordenados:
+            if pokemon not in conjunto_pokemons and es_factible(conjunto_pokemons + [pokemon]):
+                if mejor_pokemon is None or calcular_valor_total(pokemon) > calcular_valor_total(mejor_pokemon):
+                    mejor_pokemon = pokemon
+        if mejor_pokemon is None:
+            break
+        conjunto_pokemons.append(mejor_pokemon)
+    return conjunto_pokemons
+
+
