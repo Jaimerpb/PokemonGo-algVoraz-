@@ -9,3 +9,8 @@ def leer_csv(nombre_archivo):
     return lista_pokemons
 
 pokemons = leer_csv('pokemons.csv')
+
+def calcular_valor_total(pokemon):
+    ataque = int(pokemon['attack'])
+    defensa = int(pokemon['defense'])
+    return ataque * defensa
