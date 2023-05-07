@@ -14,3 +14,12 @@ def calcular_valor_total(pokemon):
     ataque = int(pokemon['attack'])
     defensa = int(pokemon['defense'])
     return ataque * defensa
+
+def es_factible(conjunto_pokemons):
+    plazo = 0
+    for pokemon in conjunto_pokemons:
+        plazo += 24
+        if plazo < int(pokemon['base_egg_steps']):
+            return False
+    return True
+
